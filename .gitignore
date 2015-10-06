@@ -1,0 +1,25 @@
+# virtualenv directory
+
+env/*
+
+# linux temporary files
+
+*.*~
+*~
+
+# python compiled files
+*.pyc
+
+# database files
+*.sqlite3
+
+# the development and production needs are different
+# settings file
+boxing/settings.py
+
+# migrations
+boxing/api/migrations/0*
+
+# user generated static files
+boxing/api/static/*
+!boxing/api/static/.gitkeep
