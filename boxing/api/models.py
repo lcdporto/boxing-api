@@ -8,6 +8,6 @@ class Container(models.Model):
 class Item(models.Model):
     name = models.CharField(max_length=1024, null=False)
     container = models.ForeignKey('Container')
-    image = models.FilePathField()
+    image = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True, null=False)
     updated= models.DateTimeField(auto_now=True, null=False)
