@@ -9,4 +9,4 @@ class ContainerSerializer(serializers.HyperlinkedModelSerializer):
 class ItemSerializer(serializers.HyperlinkedModelSerializer):
         class Meta:
                 model = Item
-                fields = ('url', 'id', 'name', 'container', 'created', 'updated')
+                fields = ('url', 'id', 'name', 'image', 'container', 'created', 'updated')
