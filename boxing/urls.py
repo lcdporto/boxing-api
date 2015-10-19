@@ -5,7 +5,6 @@ from boxing.api import views
 from django.conf import settings
 
 router = routers.DefaultRouter()
-router.register(r'boxes', views.BoxViewSet)
 router.register(r'containers', views.ContainerViewSet)
 router.register(r'items', views.ItemViewSet)
 
