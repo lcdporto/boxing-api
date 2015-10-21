@@ -1,6 +1,16 @@
+# django-rest-framework imports
 from rest_framework import viewsets
+from rest_framework import filters
+#
 from boxing.api.serializers import *
 from boxing.api.models import *
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    """
+    A list of categories to categorize items
+    """
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 class ContainerViewSet(viewsets.ModelViewSet):
     """
@@ -8,6 +18,8 @@ class ContainerViewSet(viewsets.ModelViewSet):
     """
     queryset = Container.objects.all()
     serializer_class = ContainerSerializer
+    filter_backends = (filters.OrderingFilter,)
+    ordering_fields = ('name',)
 
 class ItemViewSet(viewsets.ModelViewSet):
     """
