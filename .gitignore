@@ -23,3 +23,6 @@ boxing/api/migrations/0*
 # user generated static files
 boxing/api/static/*
 !boxing/api/static/.gitkeep
+
+# logs
+logs/*

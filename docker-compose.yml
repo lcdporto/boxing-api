@@ -1,0 +1,6 @@
+boxing-api:
+    image: boxing-api:v1
+    container_name: boxing-api
+    hostname: boxing-api
+    ports: 
+      - "80:80"

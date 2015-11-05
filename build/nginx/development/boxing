@@ -1,0 +1,21 @@
+# api.boxing-lab.local
+server {
+       listen 80;
+       server_name api.boxing-lab.local;
+       
+       # traffic related to static files are nginx responsability
+       location /static/ {
+                alias /var/www/boxing-api/boxing/api/static/;
+       }
+
+       # remaining traffic is passed to gunicorn that is listening
+       # on port 8001, we are adding some headers here to the original
+       # request
+       location / {
+                proxy_pass http://127.0.0.1:8001;
+                proxy_set_header X-Forwarded-Host $server_name;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header Host $http_host;
+                add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+        }
+}

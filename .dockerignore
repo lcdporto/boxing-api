@@ -1,0 +1,15 @@
+# linux temp files
+*~
+
+# git stuff
+.git
+.gitignore
+
+# virtual environment
+env
+
+# logs
+logs/*
+
+# django settings file
+boxing/settings.py
