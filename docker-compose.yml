@@ -4,3 +4,6 @@ boxing-api:
     hostname: boxing-api
     ports: 
       - "80:80"
+    environment:
+      - TERM=xterm
+      
