@@ -1,5 +1,5 @@
 boxing-api:
-    image: boxing-api:v1
+    image: tutum.co/lcdporto/boxing-api:latest
     container_name: boxing-api
     hostname: boxing-api
     ports: 
