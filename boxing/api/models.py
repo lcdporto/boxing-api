@@ -17,7 +17,7 @@ class Item(models.Model):
     # http://www.django-rest-framework.org/api-guide/fields/#imagefield
     # https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.ImageField
     # https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.FileField
-    image = models.ImageField()
+    image = models.ImageField(null=True)
     quantity = models.SmallIntegerField(default=1)
     created = models.DateTimeField(auto_now_add=True, null=False)
     updated= models.DateTimeField(auto_now=True, null=False)
