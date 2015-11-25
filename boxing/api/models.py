@@ -14,7 +14,10 @@ class Item(models.Model):
     name = models.CharField(max_length=1024, null=False)
     container = models.ForeignKey('Container')
     category = models.ForeignKey('Category', null=True)
-    image = models.CharField(max_length=255)
+    # http://www.django-rest-framework.org/api-guide/fields/#imagefield
+    # https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.ImageField
+    # https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.FileField
+    image = models.ImageField()
     quantity = models.SmallIntegerField(default=1)
     created = models.DateTimeField(auto_now_add=True, null=False)
     updated= models.DateTimeField(auto_now=True, null=False)
