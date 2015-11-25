@@ -6,4 +6,6 @@ boxing-api:
       - "80:80"
     environment:
       - TERM=xterm
+    volumes:
+      - /home/lobo/docker-volumes/boxing-api:/var/www/boxing-api
       
