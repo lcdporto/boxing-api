@@ -5,6 +5,13 @@ from rest_framework import filters
 from boxing.api.serializers import *
 from boxing.api.models import *
 
+class AccountViewSet(viewsets.ModelViewSet):
+    """
+    A list of users
+    """
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer
+
 class CategoryViewSet(viewsets.ModelViewSet):
     """
     A list of categories to categorize items

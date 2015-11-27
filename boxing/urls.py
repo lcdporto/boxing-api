@@ -6,6 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
+router.register(r'accounts', views.AccountViewSet)
 router.register(r'categories', views.CategoryViewSet)
 router.register(r'containers', views.ContainerViewSet)
 router.register(r'items', views.ItemViewSet)
