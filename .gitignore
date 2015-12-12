@@ -21,7 +21,13 @@ boxing/settings.py
 boxing/api/migrations/0*
 
 # user generated static files
-boxing/api/static/*
+# boxing/api/static/**/*
+boxing/api/static/admin/
+boxing/api/static/index.html
+boxing/api/static/media/*.*
+!boxing/api/static/media/default.png
+boxing/api/static/rest_framework/
+
 !boxing/api/static/.gitkeep
 
 # logs
