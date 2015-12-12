@@ -89,10 +89,16 @@ class Category(models.Model):
     created = models.DateField(auto_now_add=True, null=True)
     updated = models.DateTimeField(auto_now=True, null=True)
 
+    def __str__(self):
+        return self.name
+
 class Container(models.Model):
     name = models.CharField(max_length=1024, null=False, unique=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
     updated = models.DateTimeField(auto_now=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 class Item(models.Model):
     name = models.CharField(max_length=1024, null=False)
