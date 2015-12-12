@@ -13,3 +13,11 @@ logs/*
 
 # django settings file
 boxing/settings.py
+
+# database
+*.sqlite3
+
+# ignore all static files
+# except our default item image
+boxing/api/static/media/*
+!boxing/api/static/media/default.png
