@@ -17,8 +17,7 @@ env/*
 # settings file
 boxing/settings.py
 
-# migrations
-boxing/api/migrations/0*
+# do not ignore migrations
 
 # user generated static files
 # boxing/api/static/**/*
