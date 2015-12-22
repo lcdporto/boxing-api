@@ -20,3 +20,8 @@ class ItemSerializer(serializers.ModelSerializer):
         class Meta:
                 model = Item
                 fields = ('id', 'name', 'image', 'container', 'category', 'quantity', 'created', 'updated')
+
+class PhotoSerializer(serializers.ModelSerializer):
+        class Meta:
+                model = Photo
+                fields = ('id', 'name', 'path', 'created', 'updated')

@@ -35,4 +35,10 @@ class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
 
+class PhotoViewSet(viewsets.ModelViewSet):
+    """
+    A list of photos
+    """
+    queryset = Photo.objects.all()
+    serializer_class = PhotoSerializer
     
