@@ -18,5 +18,7 @@ boxing/settings.py
 # user generated and other static files
 boxing/api/static/
 
+# do not ignore migrations
+
 # logs
 logs/*

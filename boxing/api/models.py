@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
 
+import os
+from django.conf import settings
+
 # the manager for the account model
 class AccountManager(BaseUserManager):
     
@@ -107,7 +110,13 @@ class Item(models.Model):
     # http://www.django-rest-framework.org/api-guide/fields/#imagefield
     # https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.ImageField
     # https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.FileField
-    image = models.ImageField(null=True)
+    image = models.ImageField(default='default.png')
     quantity = models.SmallIntegerField(default=1)
     created = models.DateTimeField(auto_now_add=True, null=False)
     updated= models.DateTimeField(auto_now=True, null=False)
+
+class Photo(models.Model):
+    name = models.CharField(max_length=255, null=True)
+    path = models.ImageField(null=False)
+    created = models.DateTimeField(auto_now_add=True, null=False)
+    updated = models.DateTimeField(auto_now=True, null=False)
