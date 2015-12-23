@@ -13,3 +13,6 @@ logs/*
 
 # django settings file
 boxing/settings.py
+
+# ignore database
+boxing.sqlite3
