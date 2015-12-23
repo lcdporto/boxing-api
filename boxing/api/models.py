@@ -105,7 +105,7 @@ class Container(models.Model):
 
 class Item(models.Model):
     name = models.CharField(max_length=1024, null=False)
-    container = models.ForeignKey('Container')
+    container = models.ForeignKey('Container', null=True)
     category = models.ForeignKey('Category', null=True)
     # http://www.django-rest-framework.org/api-guide/fields/#imagefield
     # https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.ImageField
