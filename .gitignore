@@ -1,9 +1,7 @@
 # virtualenv directory
-
 env/*
 
 # linux temporary files
-
 *.*~
 *~
 
@@ -17,10 +15,7 @@ env/*
 # settings file
 boxing/settings.py
 
-# migrations
-boxing/api/migrations/0*
-
-# user generated static files
+# user generated and other static files
 boxing/api/static/
 
 # logs

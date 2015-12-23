@@ -4,6 +4,10 @@ FROM ubuntu:14.04
 # Maintainer Info
 MAINTAINER Ricardo Lobo <ricardolobo@audienciazero.org>
 
+# by default we are in development
+# set env var app_in_production to false
+ENV APP_IN_PRODUCTION=false
+
 # install packages
 RUN apt-get update && \
 apt-get -y install \
@@ -43,5 +47,5 @@ RUN locale-gen pt_PT.UTF-8
 RUN chmod ug+x /var/www/boxing-api/initialize.sh
 
 # supervisor configuration
-COPY build/supervisor/development/boxing.conf /etc/supervisor/conf.d/boxing.conf
+COPY dist/development/supervisor/boxing.conf /etc/supervisor/conf.d/boxing.conf
 CMD ["/usr/bin/supervisord"]
