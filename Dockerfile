@@ -13,25 +13,10 @@ RUN apt-get update && \
 apt-get -y install \
 python3-pip \
 python3-dev \
-python3-lxml \
 nginx \
 supervisor \
 wget \
 sqlite3
-
-# Install Pillow  Dependencies
-# Following Official Basic Installation
-# http://pillow.readthedocs.org/en/3.0.x/installation.html#basic-installation
-RUN apt-get -y install \
-libtiff5-dev \
-libjpeg8-dev \
-zlib1g-dev \
-libfreetype6-dev \
-liblcms2-dev \
-libwebp-dev \
-tcl8.6-dev \
-tk8.6-dev \
-python-tk
 
 # Configure Django project
 ADD . /var/www/boxing-api
