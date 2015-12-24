@@ -3,4 +3,4 @@ djangorestframework
 django-cors-headers
 gunicorn
 djangorestframework-jwt
-Pillow
+django-filter

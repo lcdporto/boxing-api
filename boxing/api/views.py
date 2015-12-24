@@ -36,6 +36,9 @@ class ItemViewSet(viewsets.ModelViewSet):
     """
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
+    filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter)
+    filter_fields = ('container', 'category')
+    search_fields = ('name',)
 
 class PhotoViewSet(viewsets.ModelViewSet):
     """
