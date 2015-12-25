@@ -1,7 +1,7 @@
-# Use this as a base image
+# use this as the base image
 FROM ubuntu:14.04
 
-# Maintainer Info
+# maintainer information
 MAINTAINER Ricardo Lobo <ricardolobo@audienciazero.org>
 
 # by default we are in development mode
@@ -19,12 +19,27 @@ supervisor \
 wget \
 sqlite3
 
-# install python dependencies using pip3
-RUN pip3 install -r requirements.txt
+# install pillow dependencies, pillow is
+# required by django's imagefield
+# following official basic installation
+# http://pillow.readthedocs.org/en/3.0.x/installation.html#basic-installation
+RUN apt-get -y install \
+libtiff5-dev \
+libjpeg8-dev \
+zlib1g-dev \
+libfreetype6-dev \
+liblcms2-dev \
+libwebp-dev \
+tcl8.6-dev \
+tk8.6-dev \
+python-tk
 
 # copy django project
 ADD . /var/www/boxing-api
 WORKDIR /var/www/boxing-api
+
+# install python dependencies using pip3
+RUN pip3 install -r requirements.txt
 
 # set locale to european portuguese
 RUN locale-gen pt_PT.UTF-8
