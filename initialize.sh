@@ -27,6 +27,7 @@ ln -s $PROJECT_ROOT/dist/$BUILD/django/settings.py $PROJECT_ROOT/boxing/settings
 if [ "$APP_IN_PRODUCTION" = false ]; then
     # the -n flag means no clobber, i.e do not replace an existing file
     cp -n dist/$BUILD/database/boxing.sqlite3 $PROJECT_ROOT/
+fi
 
 # collect static files (e.g. images to the static folder as defined in the settings)
 python3 $PROJECT_ROOT/manage.py collectstatic --noinput
