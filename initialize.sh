@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# log this build
-echo $(date +"%d_%m_%Y_%H_%M_%S") >> logs/initialize.log
-
+LOGFILE=logs/initialize.log
 PROJECT=boxing
 PROJECT_ROOT=/var/www/boxing-api
 
@@ -10,7 +8,11 @@ if [ "$APP_IN_PRODUCTION" = false ]; then
     BUILD=development
 else
     BUILD=production
-    
+fi
+
+# log this build
+echo $(date +"%d_%m_%Y_%H_%M_%S") >> $LOGFILE
+
 # delete default nginx config
 rm /etc/nginx/sites-enabled/default
 
@@ -30,3 +32,5 @@ if [ "$APP_IN_PRODUCTION" = false ]; then
 python3 $PROJECT_ROOT/manage.py collectstatic --noinput
 # apply migrations to the database
 python3 $PROJECT_ROOT/manage.py migrate --noinput
+
+exit 0
