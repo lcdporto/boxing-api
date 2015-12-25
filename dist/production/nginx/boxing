@@ -1,6 +1,6 @@
 server {
        listen 80;
-       server_name api.audienciazero.local;
+       server_name api.boxing.audienciazero.net;
        
        # traffic related to static files are nginx responsability
        location /static/ {

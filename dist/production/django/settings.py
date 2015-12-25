@@ -57,8 +57,9 @@ MIDDLEWARE_CLASSES = (
 
 # django-cors settings
 # for info on django-cors settings https://github.com/ottoyiu/django-cors-headers
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True # when set to True allows the use of cookies
+CORS_ORIGIN_WHITELIST = ('boxing.audienciazero.net',)
 
 ROOT_URLCONF = 'boxing.urls'
 
@@ -72,7 +73,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'boxing.sqlite3'),
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
