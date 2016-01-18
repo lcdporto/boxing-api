@@ -5,3 +5,4 @@ gunicorn
 djangorestframework-jwt
 django-filter
 Pillow
+django-rest-swagger

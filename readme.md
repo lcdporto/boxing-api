@@ -13,3 +13,9 @@ $ docker run -tid --name boxing-api -p 80:80 lcdporto/boxing-api
 * By default the container assumes development settings
 * In development mode a pre-populated database is used
 * In development mode you have a user with email admin@lcdporto.org and password admin
+
+## API Documentation ##
+
+* We are using Django Rest Swagger to document the api using the Swagger Specification
+* You can access the docs at http://127.0.0.1/api-docs
+
