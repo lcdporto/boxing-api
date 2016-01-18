@@ -22,7 +22,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'boxing.api'
+    'boxing.api',
+    'rest_framework_swagger'
 )
 
 REST_FRAMEWORK = {
@@ -32,6 +33,20 @@ REST_FRAMEWORK = {
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
     'PAGE_SIZE': sys.maxsize
+}
+
+# required by rest_framework_swagger
+TEMPLATE_LOADERS = (
+    'django.template.loaders.eggs.Loader',
+)
+
+SWAGGER_SETTINGS = {
+    'is_authenticated': True,
+    'info': {
+        'contact': 'ricardolobo@audienciazero.org',
+        'description': 'Boxing is an application built to provide a faster and easier way to find objects in the Laboratory.',
+        'title': 'Boxing API'
+    }
 }
 
 # AUTHENTICATION - JWT CONFIGURATION
