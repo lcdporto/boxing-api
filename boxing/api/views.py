@@ -1,11 +1,10 @@
-# django-rest-framework imports
 from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework.permissions import IsAuthenticated
 
-#
 from boxing.api.serializers import *
 from boxing.api.models import *
+from boxing.api import filtersets
 
 class AccountViewSet(viewsets.ModelViewSet):
     """
@@ -27,8 +26,8 @@ class ContainerViewSet(viewsets.ModelViewSet):
     """
     queryset = Container.objects.all()
     serializer_class = ContainerSerializer
-    filter_backends = (filters.OrderingFilter,)
     ordering_fields = ('name',)
+    ordering = 'name'
 
 class ItemViewSet(viewsets.ModelViewSet):
     """
@@ -36,9 +35,8 @@ class ItemViewSet(viewsets.ModelViewSet):
     """
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
-    filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter)
-    filter_fields = ('container', 'category')
-    search_fields = ('name',)
+    filter_class = filtersets.ItemFilterSet
+    search_fields = ('name', )
 
 class PhotoViewSet(viewsets.ModelViewSet):
     """
