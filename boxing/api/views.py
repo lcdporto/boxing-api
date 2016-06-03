@@ -1,6 +1,8 @@
 from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import list_route
+from rest_framework.response import Response
 
 from boxing.api.serializers import *
 from boxing.api.models import *
@@ -12,6 +14,11 @@ class AccountViewSet(viewsets.ModelViewSet):
     """
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
+
+    @list_route(permission_classes=[IsAuthenticated])
+    def me(self, request):
+        serializer = self.get_serializer(request.user)
+        return Response(serializer.data)
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """
