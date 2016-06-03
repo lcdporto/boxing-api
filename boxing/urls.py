@@ -10,6 +10,7 @@ router.register(r'accounts', views.AccountViewSet)
 router.register(r'categories', views.CategoryViewSet)
 router.register(r'containers', views.ContainerViewSet)
 router.register(r'items', views.ItemViewSet)
+router.register(r'media', views.MediaViewSet)
 router.register(r'photos', views.PhotoViewSet)
 
 # https://docs.djangoproject.com/en/1.8/howto/static-files/#serving-files-uploaded-by-a-user-during-development

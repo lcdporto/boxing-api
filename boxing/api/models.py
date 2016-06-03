@@ -1,13 +1,14 @@
+import os
+
 from django.db import models
 from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
-
-import os
 from django.conf import settings
 
-# the manager for the account model
+from boxing.api import mixins
+
 class AccountManager(BaseUserManager):
-    
+
     def create_user(self, email, password=None, **kwargs):
 
         if not email:
@@ -79,7 +80,7 @@ class Account(AbstractBaseUser):
 
     def has_perm(self, perm, obj=None):
         return self.is_admin()
-    
+
     def has_module_perms(self, app_label):
         return self.is_admin()
 
@@ -114,6 +115,12 @@ class Item(models.Model):
     quantity = models.SmallIntegerField(null=True, default=None)
     created = models.DateTimeField(auto_now_add=True, null=False)
     updated= models.DateTimeField(auto_now=True, null=False)
+
+class Media(mixins.Timestampable, models.Model):
+    """
+    Media Model
+    """
+    path = models.FileField(max_length=100, upload_to='%Y/%m/%d/')
 
 class Photo(models.Model):
     name = models.CharField(max_length=255, null=True)

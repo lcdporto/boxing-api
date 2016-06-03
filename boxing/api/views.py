@@ -38,6 +38,14 @@ class ItemViewSet(viewsets.ModelViewSet):
     filter_class = filtersets.ItemFilterSet
     search_fields = ('name', )
 
+class MediaViewSet(viewsets.ModelViewSet):
+    """
+    A list of media items
+    """
+    queryset = Media.objects.all()
+    serializer_class = MediaSerializer
+    permission_classes = [IsAuthenticated]
+
 class PhotoViewSet(viewsets.ModelViewSet):
     """
     A list of photos
@@ -45,4 +53,3 @@ class PhotoViewSet(viewsets.ModelViewSet):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
     permission_classes = [IsAuthenticated]
-    
