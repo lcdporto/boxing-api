@@ -111,7 +111,7 @@ class Item(models.Model):
     # https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.ImageField
     # https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.FileField
     image = models.ImageField(default='default.png')
-    quantity = models.SmallIntegerField(default=1)
+    quantity = models.SmallIntegerField(null=True, default=None)
     created = models.DateTimeField(auto_now_add=True, null=False)
     updated= models.DateTimeField(auto_now=True, null=False)
 

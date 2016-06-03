@@ -1,5 +1,4 @@
 import os
-import sys
 from datetime import timedelta
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,7 +31,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
-    'PAGE_SIZE': sys.maxsize
+    'PAGE_SIZE': 25
 }
 
 # required by rest_framework_swagger
