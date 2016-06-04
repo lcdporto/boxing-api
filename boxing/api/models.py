@@ -128,3 +128,7 @@ class Photo(models.Model):
     path = models.ImageField(null=False)
     created = models.DateTimeField(auto_now_add=True, null=False)
     updated = models.DateTimeField(auto_now=True, null=False)
+
+class Related(mixins.Timestampable, models.Model):
+    item = models.ForeignKey('Item', related_name='item')
+    related = models.ForeignKey('Item', related_name='related')

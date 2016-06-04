@@ -12,6 +12,7 @@ router.register(r'containers', views.ContainerViewSet)
 router.register(r'items', views.ItemViewSet)
 router.register(r'media', views.MediaViewSet)
 router.register(r'photos', views.PhotoViewSet)
+router.register(r'related', views.RelatedViewSet)
 
 # https://docs.djangoproject.com/en/1.8/howto/static-files/#serving-files-uploaded-by-a-user-during-development
 urlpatterns = [

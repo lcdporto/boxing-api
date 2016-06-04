@@ -61,3 +61,10 @@ class PhotoViewSet(viewsets.ModelViewSet):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
     permission_classes = [IsAuthenticated]
+
+class RelatedViewSet(viewsets.ModelViewSet):
+    """
+    A list of related items
+    """
+    queryset = Related.objects.all()
+    serializer_class = RelatedSerializer

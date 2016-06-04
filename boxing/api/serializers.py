@@ -39,3 +39,8 @@ class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Photo
         fields = ('id', 'name', 'path', 'created', 'updated')
+
+class RelatedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Related
+        fields = ('id', 'item', 'related', 'created', 'updated')

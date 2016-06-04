@@ -1,8 +1,15 @@
 from rest_framework import filters
 
+from django_filters import MethodFilter
+
 from boxing.api import models
 
 class ItemFilterSet(filters.FilterSet):
+
+    related = MethodFilter()
+
+    def filter_related(self, queryset, value):
+        return queryset.filter(related__item=value)
 
     class Meta:
         model = models.Item
