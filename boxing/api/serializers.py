@@ -28,7 +28,8 @@ class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Item
-        fields = ('id', 'name', 'avatar', 'container', 'category', 'quantity', 'created', 'updated')
+        fields = ('id', 'name', 'avatar', 'container', 'category', 'quantity', 'documentation',
+                  'created', 'updated')
 
 class MediaSerializer(serializers.ModelSerializer):
     class Meta:
