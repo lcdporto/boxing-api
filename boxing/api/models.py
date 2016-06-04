@@ -104,14 +104,12 @@ class Container(models.Model):
     def __str__(self):
         return self.name
 
-class Item(models.Model):
+class Item(mixins.Timestampable, models.Model):
     name = models.CharField(max_length=1024, null=False)
     container = models.ForeignKey('Container', null=True)
     category = models.ForeignKey('Category', null=True)
     avatar = models.CharField(max_length=100, default=settings.DEFAULT_MEDIA['ITEM_AVATAR'])
     quantity = models.SmallIntegerField(null=True, default=None)
-    created = models.DateTimeField(auto_now_add=True, null=False)
-    updated= models.DateTimeField(auto_now=True, null=False)
 
     def __str__(self):
         return self.name
