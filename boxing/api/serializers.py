@@ -1,5 +1,7 @@
 from rest_framework import serializers
+
 from boxing.api import models
+from boxing.api import validators
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,9 +19,16 @@ class ContainerSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'created', 'updated')
 
 class ItemSerializer(serializers.ModelSerializer):
+
+    avatar = serializers.CharField(
+            max_length=100,
+            required=False,
+            validators=[validators.MediaValidator()]
+    )
+
     class Meta:
         model = models.Item
-        fields = ('id', 'name', 'image', 'container', 'category', 'quantity', 'created', 'updated')
+        fields = ('id', 'name', 'avatar', 'container', 'category', 'quantity', 'created', 'updated')
 
 class MediaSerializer(serializers.ModelSerializer):
     class Meta:

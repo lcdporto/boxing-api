@@ -109,3 +109,8 @@ STATIC_URL = '/static/'
 # used to store images submitted by the users
 MEDIA_ROOT = STATIC_ROOT + 'media/'
 MEDIA_URL = STATIC_URL + 'media/'
+
+# Default Media
+DEFAULT_MEDIA = {
+    'ITEM_AVATAR': 'default/item_avatar.png'
+}
