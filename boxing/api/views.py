@@ -51,6 +51,7 @@ class MediaViewSet(viewsets.ModelViewSet):
     """
     queryset = Media.objects.all()
     serializer_class = MediaSerializer
+    filter_class = filtersets.MediaFilterSet
     permission_classes = [IsAuthenticated]
 
 class PhotoViewSet(viewsets.ModelViewSet):

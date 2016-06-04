@@ -33,7 +33,7 @@ class ItemSerializer(serializers.ModelSerializer):
 class MediaSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Media
-        fields = ('id', 'path', 'created', 'updated')
+        fields = ('id', 'path', 'item', 'created', 'updated')
 
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:

@@ -7,3 +7,9 @@ class ItemFilterSet(filters.FilterSet):
     class Meta:
         model = models.Item
         fields = ('container', 'category')
+
+class MediaFilterSet(filters.FilterSet):
+
+    class Meta:
+        model = models.Media
+        fields = ('item', )

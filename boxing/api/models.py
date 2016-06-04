@@ -113,11 +113,15 @@ class Item(models.Model):
     created = models.DateTimeField(auto_now_add=True, null=False)
     updated= models.DateTimeField(auto_now=True, null=False)
 
+    def __str__(self):
+        return self.name
+
 class Media(mixins.Timestampable, models.Model):
     """
     Media Model
     """
     path = models.FileField(max_length=100, upload_to='%Y/%m/%d/')
+    item = models.ForeignKey('Item', null=True)
 
 class Photo(models.Model):
     name = models.CharField(max_length=255, null=True)
