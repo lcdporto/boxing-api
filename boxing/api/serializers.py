@@ -32,6 +32,13 @@ class ItemSerializer(serializers.ModelSerializer):
                   'description', 'created', 'updated')
 
 class MediaSerializer(serializers.ModelSerializer):
+
+    path = serializers.FileField(
+        max_length=100,
+        allow_empty_file=False,
+        use_url=False
+    )
+        
     class Meta:
         model = models.Media
         fields = ('id', 'path', 'item', 'created', 'updated')
