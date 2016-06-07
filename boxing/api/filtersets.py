@@ -15,6 +15,12 @@ class ItemFilterSet(filters.FilterSet):
         model = models.Item
         fields = ('container', 'category')
 
+class LendingFilterSet(filters.FilterSet):
+
+    class Meta:
+        model = models.Lending
+        fields = ('id', 'state', 'account', 'item')
+
 class MediaFilterSet(filters.FilterSet):
 
     class Meta:

@@ -22,7 +22,8 @@ INSTALLED_APPS = (
     'rest_framework',
     'corsheaders',
     'boxing.api',
-    'rest_framework_swagger'
+    'rest_framework_swagger',
+    'post_office'
 )
 
 REST_FRAMEWORK = {
@@ -114,3 +115,6 @@ MEDIA_URL = STATIC_URL + 'media/'
 DEFAULT_MEDIA = {
     'ITEM_AVATAR': 'default/item_avatar.png'
 }
+
+EMAIL_SEND_EMAILS = True
+DEFAULT_FROM_EMAIL = 'boxing@lcdporto.org'

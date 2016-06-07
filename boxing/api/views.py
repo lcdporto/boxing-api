@@ -45,6 +45,25 @@ class ItemViewSet(viewsets.ModelViewSet):
     filter_class = filtersets.ItemFilterSet
     search_fields = ('name', )
 
+class LendingViewSet(viewsets.ModelViewSet):
+    """
+    A list of lendings
+    """
+    queryset = Lending.objects.all()
+    serializer_class = LendingSerializer
+    permission_classes = [IsAuthenticated]
+    filter_class = filtersets.LendingFilterSet
+
+    def get_serializer(self, *args, **kwargs):
+        """
+        Passes extra kwarg to serializer class
+        if user is staff, to allow for read_only_fields
+        modification on runtime
+        """
+        if self.request.user.is_authenticated() and self.request.user.is_staff:
+            kwargs['override_read_only_fields'] = ('state', 'return_date')
+        return super(LendingViewSet, self).get_serializer(*args, **kwargs)
+
 class MediaViewSet(viewsets.ModelViewSet):
     """
     A list of media items

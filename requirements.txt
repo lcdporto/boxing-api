@@ -6,3 +6,4 @@ djangorestframework-jwt
 django-filter
 Pillow
 django-rest-swagger
+django-post_office

@@ -4,8 +4,11 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
 from django.conf import settings
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 from boxing.api import mixins
+from boxing.api import utils
 
 class AccountManager(BaseUserManager):
 
@@ -116,6 +119,48 @@ class Item(mixins.Timestampable, models.Model):
     def __str__(self):
         return self.name
 
+class Lending(mixins.Timestampable, models.Model):
+
+    STATES = [
+        ('pending', 'pending'),
+        ('approved', 'approved'),
+        ('refused', 'refused'),
+        ('returned', 'returned'),
+    ]
+
+    account = models.ForeignKey(settings.AUTH_USER_MODEL)
+    item = models.ForeignKey('Item')
+    state = models.CharField(default='pending', choices=STATES, max_length=10)
+    start_date = models.DateTimeField(null=True)
+    end_date = models.DateTimeField(null=True)
+    lending_reason = models.TextField(null=False)
+    refusal_reason = models.TextField(null=True)
+    notes = models.TextField(null=True)
+    return_date = models.DateTimeField(null=True)
+
+    def __init__(self, *args, **kwargs):
+        super(Lending, self).__init__(*args, **kwargs)
+        self.__initial_state = self.state
+
+    def get_email_class(self):
+        from boxing.api import emails
+        return {
+            'approved': emails.LendingApproved,
+            'refused': emails.LendingRefused,
+            'returned': emails.LendingReturned
+        }.get(self.state)
+
+    def send_feedback_email(self):
+        email_class = self.get_email_class()
+        if email_class:
+            data = {'lending': self}
+            utils.to_account(self.account, email_class, **data)
+
+    def save(self, *args, **kwargs):
+        if self.pk and self.state != self.__initial_state:
+            self.send_feedback_email()
+        super(Lending, self).save(*args, **kwargs)
+
 class Media(mixins.Timestampable, models.Model):
     """
     Media Model
@@ -132,3 +177,11 @@ class Photo(models.Model):
 class Related(mixins.Timestampable, models.Model):
     item = models.ForeignKey('Item', related_name='item')
     related = models.ForeignKey('Item', related_name='related')
+
+@receiver(post_save, sender=Lending)
+def after_lending_saved(instance, created, **kwargs):
+    if created:
+        from boxing.api.emails import LendingCreated, LendingPending
+        data = {'lending': instance}
+        utils.to_staff(LendingCreated, **data)
+        utils.to_account(instance.account, LendingPending, **data)
