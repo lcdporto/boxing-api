@@ -77,7 +77,7 @@ MIDDLEWARE_CLASSES = (
 # for info on django-cors settings https://github.com/ottoyiu/django-cors-headers
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True # when set to True allows the use of cookies
-CORS_ORIGIN_WHITELIST = ('boxing.audienciazero.net',)
+CORS_ORIGIN_WHITELIST = ('boxing.audienciazero.net', 'dev.boxing.audienciazero.net', 'localhost:3000')
 
 ROOT_URLCONF = 'boxing.urls'
 
