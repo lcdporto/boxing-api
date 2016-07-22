@@ -21,3 +21,6 @@ boxing.sqlite3
 # except our default item image
 boxing/api/static/media/*
 !boxing/api/static/media/default.png
+
+# docker-compose file
+docker-compose.yml

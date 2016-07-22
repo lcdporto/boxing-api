@@ -22,3 +22,6 @@ boxing/api/static/
 
 # logs
 logs/*
+
+# docker-compose file
+docker-compose.yml
