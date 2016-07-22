@@ -112,9 +112,9 @@ class Item(mixins.Timestampable, models.Model):
     container = models.ForeignKey('Container', null=True)
     category = models.ForeignKey('Category', null=True)
     avatar = models.CharField(max_length=100, default=settings.DEFAULT_MEDIA['ITEM_AVATAR'])
-    quantity = models.SmallIntegerField(null=True, default=None)
-    documentation = models.URLField(null=True)
-    description = models.TextField(null=True)
+    quantity = models.SmallIntegerField(null=True, blank=True, default=None)
+    documentation = models.URLField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
