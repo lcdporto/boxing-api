@@ -25,3 +25,6 @@ logs/*
 
 # docker-compose file
 docker-compose.yml
+
+# local utils scripts
+deploy.sh

@@ -24,3 +24,6 @@ boxing/api/static/media/*
 
 # docker-compose file
 docker-compose.yml
+
+# local utils scripts
+deploy.sh
