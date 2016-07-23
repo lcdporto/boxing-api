@@ -99,6 +99,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
 class Container(models.Model):
     name = models.CharField(max_length=1024, null=False, unique=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
@@ -106,6 +111,11 @@ class Container(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'container'
+        verbose_name_plural = 'containers'
 
 class Item(mixins.Timestampable, models.Model):
     name = models.CharField(max_length=1024, null=False)
@@ -118,6 +128,11 @@ class Item(mixins.Timestampable, models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'item'
+        verbose_name_plural = 'items'
 
 class Lending(mixins.Timestampable, models.Model):
 
